@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS_Practice</title>
+    <!--<script>
+        document.write("Hello, world!");
+    </script>-->
+    <script src="my_js.js"></script>
+    <script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+    <p id="pid">Hello</p>
+    <p>test</p>
+    <button type="button" onclick="displayDate()">显示当下时间</button>
+    <script>
+        // document.getElementById("pid").innerHTML="bing.com"; // 使用js改变html
+        function displayDate() {
+            document.getElementById("pid").innerHTML="bing.com " + Date(); // 使用js改变html
+            $("button").click(function () {
+                $("p").show();  // 当点击 button 时显示 p 内容，有个问题，多个段落如何区分？
+            });
+        }
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("p").click(function () {
+                $(this).hide();
+            });
+        });
+    </script>
+<script>
+    $("#remind").append('input type="button" onclick="javascript:send();" value="重新推送" title="重新推送" class="e8_btn_top_first" style="max-width: 100px; overflow: hidden; text-overflow:ellipsis; white-space:nowrap;">');
+</script>
+</body>
+</html>

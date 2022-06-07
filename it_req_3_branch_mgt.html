@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+<script>
+    // 1. bindPropertyChange() - 该方法可以监控非隐藏域
+    // 2. checkCustomize = function() - 可以提交时校验
+    // 3.
+
+    var bxfs = "field"; // 报销方式
+
+
+    jQuery(function () {
+        // 报销方式为 0 时 提示隐藏字符；报销方式为 1 时 隐藏一些字段
+        jQuery("#" + bxfs).bindPropertyChange(function () {
+            var bxfs_value = jQuery("#" + bxfs).val();  // 取出该 field的 value
+
+            if (bxfs_value == '0') {        // 0 为现金， 1 为支票
+                $("[name='tips']").show();  // name属性设置为 tips的字段，提示
+            } else {
+                $("[name='tips']").hide();
+            }
+            if (bxfs_value == '1') {
+                $("[name='test']").show();  // name属性设置为 test的字段，备注和事由
+            } else {
+                $("[name='test']").hide();
+            }
+        })
+    })
+</script>
+</body>
+</html>

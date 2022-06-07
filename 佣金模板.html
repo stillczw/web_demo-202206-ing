@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    /* 逻辑梳理 - 选择模板类型（浏览按钮）
+    * 1. 选择后显示对应的明细行 - for循环遍历值
+    * 2. 更新后删除已有明细行的信息 - deleteDetailX(X); clearHy()
+    *
+    * */
+
+    /* 逻辑梳理 - 添加明细
+    * 1. 判断明细表当前行数
+    * 2. 判断交易类别数量，取出选择的交易类别名：此处是否只能选一个？
+    * 3. 判断证券类别数量，遍历选择的证券类别名
+    *
+    * */
+    $(document).ready(function(){
+        // $("[name='btn']").append('<input type="button" onclick="javascript:addDetail();" value="生成明细" title="生成明细" class="e8_btn_top_first" style="max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">');
+        $("[name='btn']").each(function(index){
+            $(this).append('<input type="button" onclick="javascript:addDetail('+index+');" value="生成明细" title="生成明细" class="e8_btn_top_first" style="max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">');
+        });
+    });
+</script>
+<script>
+    var template_type = "field521881";  // 模板类型
+
+    $(document).ready(function(){
+        $("[name='btn']").append('<input type="button" onclick="javascript:addDetail();" value="生成明细" title="生成明细" class="e8_btn_top_first" style="max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">');
+        jQuery("#" + template_type).bindPropertyChange(function() {
+            handleSelect();
+        });
+    });
+
+
+    function handleSelect() {
+        var template_type_value = $("#" + template_type).val();
+        var array = template_type_value.split(","); // 将取出的用逗号分隔的字符串转成数组，方便遍历
+        for (var i = 0; i < 13; i++) {
+            $("tr[name='mx" + i + "']").hide();
+        }
+        for(i = 0; i < array.length; i++) {
+            $("tr[name='mx" + (array[i] - 1) + "']").show();
+        }
+    }
+    function addDetail(index) {
+
+            if(parseInt($("#nodesnum0").val()) == 0){
+                addRow0(0);
+            }
+            deleteDetail1();
+            deleteDetail2();
+
+    }
+
+    function deleteDetail0(){
+        $("[name = check_node_0]:checkbox").attr("checked", true);
+        deleteRow0(0,true);
+    }
+    function deleteDetail1(){
+        $("[name = check_node_1]:checkbox").attr("checked", true);
+        deleteRow1(1,true);
+    }
+    function deleteDetail2(){
+        $("[name = check_node_2]:checkbox").attr("checked", true);
+        deleteRow2(2,true);
+    }
+    function deleteDetail3(){
+        $("[name = check_node_3]:checkbox").attr("checked", true);
+        deleteRow3(3,true);
+    }
+    function deleteDetail4(){
+        $("[name = check_node_4]:checkbox").attr("checked", true);
+        deleteRow4(4,true);
+    }
+    function deleteDetail5(){
+        $("[name = check_node_5]:checkbox").attr("checked", true);
+        deleteRow5(5,true);
+    }
+    function deleteDetail6(){
+        $("[name = check_node_6]:checkbox").attr("checked", true);
+        deleteRow6(6,true);
+    }
+    function deleteDetail7(){
+        $("[name = check_node_7]:checkbox").attr("checked", true);
+        deleteRow7(7,true);
+    }
+    function deleteDetail8(){
+        $("[name = check_node_8]:checkbox").attr("checked", true);
+        deleteRow8(8,true);
+    }
+    function deleteDetail9(){
+        $("[name = check_node_9]:checkbox").attr("checked", true);
+        deleteRow9(9,true);
+    }
+    function deleteDetail10(){
+        $("[name = check_node_10]:checkbox").attr("checked", true);
+        deleteRow10(10,true);
+    }
+    function deleteDetail11(){
+        $("[name = check_node_11]:checkbox").attr("checked", true);
+        deleteRow11(11,true);
+    }
+    function deleteDetail12(){
+        $("[name = check_node_12]:checkbox").attr("checked", true);
+        deleteRow12(12,true);
+    }
+    function deleteDetail13(){
+        $("[name = check_node_13]:checkbox").attr("checked", true);
+        deleteRow13(13,true);
+    }
+
+    function clearHy(){
+        var selector="tr[name='hys']";
+        //清空文本框
+        jQuery(selector).find("input[type='text']").val("");
+        //清空日期
+        jQuery(selector).find(".calendar,.clock").siblings("span").html("");
+        jQuery(selector).find(".calendar,.clock").siblings("input[type='hidden']").val("");
+
+        jQuery(selector).find(".Calendar,.Clock").siblings("span").html("");
+        jQuery(selector).find(".Calendar,.Clock").siblings("input[type='hidden']").val("");
+
+        jQuery(selector).find("input[type='checkbox']").each(function(){
+            try{
+                changeCheckboxStatus(this,false);
+            }catch(e){
+                this.checked = false;
+            }
+        });
+    }
+</script>
+
+
+<script>
+    /* for test */
+    for (var i = 0; i < 13; i++) {
+        $("tr[name='mx" + i + "']").hide();
+    }
+    for(i = 0; i < $("#field521881").val().split(",").length; i++) {
+        $("tr[name='mx" + ($("#field521881").val().split(",")[i] - 1) + "']").show();
+    }
+</script>
+</html>
