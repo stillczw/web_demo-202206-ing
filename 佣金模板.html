@@ -29,6 +29,34 @@
 </script>
 <script>
     var template_type = "field521881";  // 模板类型
+    // 主表中用于生成明细的交易类别及证券类别字段；通过sql查表获得
+    var transaction_type1 = "field522835";
+    var securities_type1 = "field522336";
+    var transaction_type2 = "field522839";
+    var securities_type2 = "field522840";
+    var transaction_type3 = "field522841";
+    var securities_type3 = "field522842";
+    var transaction_type4 = "field522843";
+    var securities_type4 = "field522844";
+    var transaction_type5 = "field522845";
+    var securities_type5 = "field522846";
+    var transaction_type6 = "field522847";
+    var securities_type6 = "field522848";
+    var transaction_type7 = "field522849";
+    var securities_type7 = "field522850";
+    var transaction_type8 = "field522851";
+    var securities_type8 = "field522852";
+    var transaction_type9 = "field522853";
+    var securities_type9 = "field522854";
+    var transaction_type10 = "field522855";
+    var securities_type10 = "field522856";
+    var transaction_type11 = "field522857";
+    var securities_type11 = "field522858";
+    var transaction_type12 = "field522859";
+    var securities_type12 = "field522860";
+    var transaction_type13 = "field522861";
+    var securities_type13 = "field522862";
+
 
     $(document).ready(function(){
         $("[name='btn']").append('<input type="button" onclick="javascript:addDetail();" value="生成明细" title="生成明细" class="e8_btn_top_first" style="max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">');
@@ -42,20 +70,110 @@
         var template_type_value = $("#" + template_type).val();
         var array = template_type_value.split(","); // 将取出的用逗号分隔的字符串转成数组，方便遍历
         for (var i = 0; i < 13; i++) {
-            $("tr[name='mx" + i + "']").hide();
+            if(array.indexOf(i) < 0){
+                $("tr[name='mx" + i + "']").hide();
+                deleteDetail(i);
+            }
         }
         for(i = 0; i < array.length; i++) {
             $("tr[name='mx" + (array[i] - 1) + "']").show();
         }
     }
     function addDetail(index) {
+        switch(index) {
+            case 0:
+                addRow0(0);
+                break;
+            case 1:
+                addRow1(1);
+                break;
+            case 2:
+                addRow2(2);
+                break;
+            case 3:
+                addRow3(3);
+                break;
+            case 4:
+                addRow4(4);
+                break;
+            case 5:
+                addRow5(5);
+                break;
+            case 6:
+                addRow6(6);
+                break;
+            case 7:
+                addRow7(7);
+                break;
+            case 8:
+                addRow8(8);
+                break;
+            case 9:
+                addRow9(9);
+                break;
+            case 10:
+                addRow10(10);
+                break;
+            case 11:
+                addRow11(11);
+                break;
+            case 12:
+                addRow12(12);
+                break;
 
-            if(parseInt($("#nodesnum0").val()) == 0){
+        }
+
+
+        if(parseInt($("#nodesnum0").val()) == 0){
                 addRow0(0);
             }
             deleteDetail1();
             deleteDetail2();
 
+    }
+
+    function deleteDetail(index) {
+        switch (index) {
+            case 0:
+                deleteDetail0();
+                break;
+            case 1:
+                deleteDetail1();
+                break;
+            case 2:
+                deleteDetail2();
+                break;
+            case 3:
+                deleteDetail3();
+                break;
+            case 4:
+                deleteDetail4();
+                break;
+            case 5:
+                deleteDetail5();
+                break;
+            case 6:
+                deleteDetail6();
+                break;
+            case 7:
+                deleteDetail7();
+                break;
+            case 8:
+                deleteDetail8();
+                break;
+            case 9:
+                deleteDetail9();
+                break;
+            case 10:
+                deleteDetail10();
+                break;
+            case 11:
+                deleteDetail11();
+                break;
+            case 12:
+                deleteDetail12();
+                break;
+        }
     }
 
     function deleteDetail0(){
@@ -115,6 +233,7 @@
         deleteRow13(13,true);
     }
 
+    // 不需要清空字段，删除时自然清空了明细表的行数据
     function clearHy(){
         var selector="tr[name='hys']";
         //清空文本框
